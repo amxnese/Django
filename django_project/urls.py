@@ -15,8 +15,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls'))
 ]
+
+'''
+In Django, the urlpatterns variable in a project's urls.py file defines the mapping between
+URLs and views. The include() function is used to include patterns from other URLconfs.
+
+path('blog/', ...) specifies a URL pattern that matches any URL starting with "blog/".
+include('blog.urls') tells Django to include the URLs defined in another URLconf file located at 'blog.urls'.
+So, when a user visits a URL that starts with "blog/", Django will look for further URL patterns 
+(patterns that comes after the blog/ , meaning if the url is blog/about, django will only look for 
+a url that mathches about in the blog.urls, so if we pass only blog/, django will look for a url 
+that matches an empty string) in the blog.urls module and match them accordingly. This helps in 
+organizing URLs into smaller, modular components, 
+making the codebase more maintainable and easier to manage.
+'''

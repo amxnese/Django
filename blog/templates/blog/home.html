@@ -1,79 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make Sure</title>
-    <style>
-        /* Add your CSS styles here */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        main {
-            padding: 20px;
-        }
-        .post {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 20px;
-        }
-        .post h2 {
-            margin-top: 0;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Simple Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    h4 {
+      color: #666;
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Make Sure</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="post">
-            <h2>Featured Post Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et libero non justo varius venenatis. In sit amet tellus eu neque ullamcorper fringilla.</p>
-            <a href="#">Read more</a>
-        </section>
-        <section class="post">
-            <h2>Another Featured Post Title</h2>
-            <p>Quisque viverra urna sit amet quam facilisis, nec consequat tortor pharetra. Morbi vitae est eget orci volutpat ultricies. Nullam a ultricies lorem.</p>
-            <a href="#">Read more</a>
-        </section>
-        <!-- Add more featured posts here -->
-    </main>
-    <footer>
-        <p>&copy; 2024 Make Sure. All rights reserved.</p>
-    </footer>
+  <h1>Welcome to My Simple Blog</h1>
+  {% for post in posts %}
+    <article>
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.content }}</p>
+      <div>
+        <span>Posted on {{ post.date }} by {{ post.author }}</span>
+      </div>
+    </article>
+  {% endfor %}
 </body>
 </html>
+

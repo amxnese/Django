@@ -1,37 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Simple Blog</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      color: #333;
-      margin-bottom: 10px;
-    }
-    h4 {
-      color: #666;
-      margin-top: 5px;
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Welcome to My Simple Blog</h1>
+{% extends "blog/base.html" %}
+{% block content %}
+<div>
   {% for post in posts %}
-    <article>
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.content }}</p>
-      <div>
-        <span>Posted on {{ post.date }} by {{ post.author }}</span>
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{ post.author }}</a>
+        <small class="text-muted">{{ post.date|date:"F d, Y" }}</small>
       </div>
-    </article>
+      <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+      <p class="article-content">{{ post.content }}</p>
+    </div>
+  </article>
   {% endfor %}
-</body>
-</html>
-
+</div>
+{% endblock content %}

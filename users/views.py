@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def register(request):
   if request.method == 'POST':
@@ -10,8 +11,10 @@ def register(request):
       username = form.cleaned_data.get('username')
       messages.success(request, f'Account Created For {username}')
       return redirect('blog-home')
-    # else:
-    #   messages.error(request, 'Something Went Wrong!!')
   else:
     form = UserCreationForm()
   return render(request, 'users/register.html', {'form':form})
+
+@login_required
+def profile(request):
+  return render(request, 'users/profile.html')
